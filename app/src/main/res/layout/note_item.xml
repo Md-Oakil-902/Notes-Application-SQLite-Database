@@ -12,16 +12,32 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/titleTextView"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins"
-            android:paddingStart="5dp"
-            android:text="TextView"
-            android:textColor="#ff22"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:paddingStart="5dp"
+                android:text="TextView"
+                android:textColor="#ff22"
+                android:textSize="18sp"
+                android:layout_weight="0.6"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/updateButton"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                app:srcCompat="@drawable/baseline_edit_24" />
+
+
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/contentTextView"
