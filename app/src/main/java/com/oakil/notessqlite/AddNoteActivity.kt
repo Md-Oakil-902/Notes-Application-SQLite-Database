@@ -19,7 +19,6 @@ class AddNoteActivity : AppCompatActivity() {
         database = NotesDatabaseHelper(this)
 
 
-
         binding.saveButton.setOnClickListener{
             val title = binding.titleEditText.text.toString()
             val content = binding.contentEditText.text.toString()
@@ -28,8 +27,6 @@ class AddNoteActivity : AppCompatActivity() {
             database.insertNote(note)
             finish()
             Toast.makeText(this, "notes saved" , Toast.LENGTH_SHORT).show()
-
-
         }
 
     }
