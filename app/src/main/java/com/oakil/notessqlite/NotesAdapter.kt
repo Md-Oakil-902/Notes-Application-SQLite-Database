@@ -56,12 +56,10 @@ class NotesAdapter(private var notes: List<Note>, context: Context) :
 
     }
 
-
     fun refreshData(newNotes: List<Note>){
         notes = newNotes
         notifyDataSetChanged()
 
     }
-
 
 }
