@@ -2,17 +2,20 @@ package com.oakil.notessqlite
 
 import android.content.Context
 import android.content.Intent
+import android.health.connect.datatypes.units.Length
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import org.w3c.dom.Text
 
 class NotesAdapter(private var notes: List<Note>, context: Context) :
     RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
+        private val db: NotesDatabaseHelper = NotesDatabaseHelper(context)
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder =
@@ -36,6 +39,12 @@ class NotesAdapter(private var notes: List<Note>, context: Context) :
             holder.itemView.context.startActivity(intent)
         }
 
+        holder.deleteButton.setOnClickListener {
+            db.deleteNote(note.id)
+            refreshData(db.getAllNotes())
+            Toast.makeText(holder.itemView.context , "Notes Deleted " , Toast.LENGTH_SHORT).show()
+        }
+
     }
 
 
@@ -43,6 +52,7 @@ class NotesAdapter(private var notes: List<Note>, context: Context) :
         val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
         val contentTextView : TextView = itemView.findViewById(R.id.contentTextView)
         val updateButton: ImageView = itemView.findViewById(R.id.updateButton)
+        val deleteButton: ImageView = itemView.findViewById(R.id.deleteButton)
 
     }
 

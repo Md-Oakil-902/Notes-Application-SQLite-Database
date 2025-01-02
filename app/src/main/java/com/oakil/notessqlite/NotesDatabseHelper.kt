@@ -98,6 +98,16 @@ class NotesDatabaseHelper(context: Context) :
         return Note(id, tile, content)
 
     }
+
+    fun deleteNote(noteId: Int){
+        val db = writableDatabase
+        val where = "$COLUMN_ID = ?"
+        val whereArgs = arrayOf(noteId.toString())
+        db.delete(TABLE_NAME, where , whereArgs)
+        db.close()
+
+
+    }
 }
 
 
